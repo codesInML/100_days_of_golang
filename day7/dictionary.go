@@ -50,8 +50,8 @@ func (d Dictionary) Update(word, definition string) error {
 	return nil
 }
 
-func (d Dictionary) Delete(word string) error {
+func (d Dictionary) Delete(word string) {
 	delete(d, word)
-	
-// https: //dave.cheney.net/2014/12/01/five-suggestions-for-setting-up-a-go-project
+
+	// https: //dave.cheney.net/2014/12/01/five-suggestions-for-setting-up-a-go-project
 }

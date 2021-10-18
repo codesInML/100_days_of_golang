@@ -78,8 +78,22 @@ func TestDelete(t *testing.T) {
 		dictionary := Dictionary{word: definition}
 		dictionary.Delete(word)
 
-		assertDefinition(t, dictionary, definition, word)
+		assertDeleted(t, dictionary, word)
 	})
+}
+
+func assertDeleted(t testing.TB, dictionary Dictionary, word string) {
+	t.Helper()
+
+	got, err := dictionary.Search(word)
+
+	if err == nil {
+		t.Fatal("expected to get an error")
+	}
+
+	if got != "" {
+		t.Errorf("expected %q but got %q, given %q", "", got, word)
+	}
 }
 
 func assertStrings(t testing.TB, got, want, test string) {
